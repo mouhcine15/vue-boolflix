@@ -1,14 +1,25 @@
 <template>
   <div class="hello">
-    
+    <input type="text">
+    <button>Invio</button>
+    <div>
+        <MyMovie
+            v-for="(element, i) in movies" 
+            :key="i"
+            :movieObject="element"/>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios"
+import MyMovie from './MyMovie.vue'
 
 export default {
   name: 'MovieList',
+  components: {
+    MyMovie
+  },
 
     data () {
       return {
@@ -19,7 +30,7 @@ export default {
     created() {
       axios.get(this.apiUrl)
       .then(result => {
-          this.movies = result.data.response;
+          this.movies = result.data.results;
           console.log(result)
       })
   },
