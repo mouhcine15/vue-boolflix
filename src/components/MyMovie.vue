@@ -10,7 +10,13 @@
           <lang-flag :iso="movieObject.original_language"/>
         </div>
         <div>
-          {{movieObject.vote_average}}
+          {{Math.round(movieObject.vote_average/2)}}
+        </div>
+        <div>
+          <img :src="`http://image.tmdb.org/t/p/w500/${movieObject.poster_path}`" alt="">
+        </div>
+        <div >
+          <font-awesome-icon icon="fa-solid fa-star"/>
         </div>
 
   </div>
@@ -24,6 +30,12 @@ export default {
   name: 'MyMovie',
   components: {
     LangFlag
+  },
+  methods: {
+    starRating() {
+      
+    }
+
   },
   props: {
     movieObject: Object
