@@ -1,10 +1,10 @@
 <template>
   <div class="hello">
-    <input type="text">
-    <button>Invio</button>
+    <input type="text" v-model="searching" @keyup.enter="searchMovie">
+    <button @click="searchMovie">Invio</button>
     <div>
         <MyMovie
-            v-for="(element, i) in movies" 
+            v-for="(element, i) in movies && series" 
             :key="i"
             :movieObject="element"/>
     </div>
@@ -24,7 +24,12 @@ export default {
     data () {
       return {
           apiUrl: "https://api.themoviedb.org/3/search/movie?api_key=6e5cb1250b73157692bdf4c00483dc2b&language=it-IT&query=matrix",
-          movies: []
+          movies: [],
+
+          apiUrlSerie: "https://api.themoviedb.org/3/search/tv?api_key=6e5cb1250b73157692bdf4c00483dc2b&language=it_IT&query=scrubs",
+          series: [],
+
+          searching: ""
       }
     },
     created() {
@@ -34,6 +39,26 @@ export default {
           console.log(result)
       })
   },
+  methods: {
+    searchMovie() {
+      this.apiUrl= "https://api.themoviedb.org/3/search/movie?api_key=6e5cb1250b73157692bdf4c00483dc2b&language=it-IT&query=" + this.searching;
+      axios.get(this.apiUrl)
+      .then(result => {
+          this.movies = result.data.results;
+          console.log(result)
+      }),
+      this.searchSerie()
+    },
+    searchSerie() {
+      this.apiUrlSerie= "https://api.themoviedb.org/3/search/tv?api_key=6e5cb1250b73157692bdf4c00483dc2b&language=it-IT&query=" + this.searching;
+      axios.get(this.apiUrlSerie)
+      .then(result => {
+          this.series = result.data.results;
+          console.log(result)
+      })
+    }
+
+  }
 }
 </script>
 
