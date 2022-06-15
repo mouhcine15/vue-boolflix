@@ -4,12 +4,12 @@
     <button @click="searchMovie">Invio</button>
     <div>
         <MyMovie
-            v-for="(element, i) in movies" 
-            :key="i"
+            v-for="element in movies" 
+            :key="element.i"
             :movieObject="element"/>
         <MySerieVue
-            v-for="(item, index) in series" 
-            :key="index"
+            v-for="item in series" 
+            :key="item.index"
             :serieObject="item"/>
     </div>
   </div>

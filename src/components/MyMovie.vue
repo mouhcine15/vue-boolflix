@@ -1,10 +1,5 @@
 <template>
   <div>
-    <ul>
-      <li>
-        <div>
-          {{movieObject.name}}
-        </div>
         <div>
           {{movieObject.title}}
         </div>
@@ -18,8 +13,6 @@
           {{movieObject.vote_average}}
         </div>
 
-      </li>
-    </ul>
   </div>
   
 </template>

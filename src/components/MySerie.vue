@@ -1,14 +1,7 @@
 <template>
-  <div>
-    <ul>
-      <li>
         <div>
           {{serieObject.name}}
         </div>
-      </li>
-    </ul>
-  </div>
-  
 </template>
 
 <script>
