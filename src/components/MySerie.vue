@@ -1,6 +1,9 @@
 <template>
         <div>
           {{serieObject.name}}
+          <div>
+              <lang-flag :iso="serieObject.original_language"/>
+          </div>
         </div>
 </template>
 
