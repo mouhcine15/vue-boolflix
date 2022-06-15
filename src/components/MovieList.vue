@@ -4,9 +4,13 @@
     <button @click="searchMovie">Invio</button>
     <div>
         <MyMovie
-            v-for="(element, i) in movies && series" 
+            v-for="(element, i) in movies" 
             :key="i"
             :movieObject="element"/>
+        <MySerieVue
+            v-for="(item, index) in series" 
+            :key="index"
+            :serieObject="item"/>
     </div>
   </div>
 </template>
@@ -14,12 +18,14 @@
 <script>
 import axios from "axios"
 import MyMovie from './MyMovie.vue'
+import MySerieVue from './MySerie.vue'
 
 export default {
   name: 'MovieList',
   components: {
-    MyMovie
-  },
+    MyMovie,
+    MySerieVue
+},
 
     data () {
       return {
