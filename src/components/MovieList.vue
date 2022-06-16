@@ -1,7 +1,14 @@
 <template>
   <div class="hello">
-    <input type="text" v-model="searching" @keyup.enter="searchMovie">
-    <button @click="searchMovie">Invio</button>
+    <div id="header">
+      <div id="logo">
+        <h1><strong>BOOLFLIX</strong></h1>
+      </div>
+      <div>
+        <input type="text" v-model="searching" @keyup.enter="searchMovie">
+        <button @click="searchMovie">Invio</button>
+      </div>
+    </div>
     <div>
         <MyMovie
             v-for="element in movies" 
@@ -70,7 +77,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    #hello {
-        background-color: aqua;
-    }
+  #header {
+    background-color: black;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #logo {
+    color: red;
+  }
 </style>

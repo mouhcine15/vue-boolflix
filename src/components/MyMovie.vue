@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="container">
+    <div id="poster">
+      <img :src="`http://image.tmdb.org/t/p/w342/${movieObject.poster_path}`" alt="">
+      <div id="testo">
         <div>
           {{movieObject.title}}
         </div>
@@ -9,15 +12,12 @@
         <div>
           <lang-flag :iso="movieObject.original_language"/>
         </div>
-        <div>
-          {{Math.round(movieObject.vote_average/2)}}
-        </div>
-        <div>
-          <img :src="`http://image.tmdb.org/t/p/w500/${movieObject.poster_path}`" alt="">
-        </div>
         <div >
-          <font-awesome-icon icon="fa-solid fa-star"/>
+          <font-awesome-icon v-for="i in starRating(movieObject.vote_average)" :key="i" icon="fa-solid fa-star" />
+          <font-awesome-icon v-for="index in starRatingEmpty(movieObject.vote_average)" :key="index" icon="fa-regular fa-star" />
         </div>
+      </div>
+    </div>
 
   </div>
   
@@ -32,10 +32,16 @@ export default {
     LangFlag
   },
   methods: {
-    starRating() {
-      
+    starRating(rating) {
+      let calc = parseInt(Math.round(rating/2))
+      console.log(calc);
+      return calc;
+    },
+    starRatingEmpty(rating) {
+      let calcEmpty = parseInt(Math.round(5-(rating/2)))
+      console.log(calcEmpty);
+      return calcEmpty;
     }
-
   },
   props: {
     movieObject: Object
@@ -45,5 +51,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    
+    .container {
+      position: relative;
+      display: inline-block;
+    }
+    #poster {
+      position: relative;
+      margin: 20px;
+    }
+    #testo {
+      position: absolute;
+      top: 0;
+    }
 </style>
