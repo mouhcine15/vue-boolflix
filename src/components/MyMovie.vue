@@ -19,7 +19,7 @@
         </div>
         <div >
           Voto: 
-          <font-awesome-icon v-for="i in starRating(movieObject.vote_average)" :key="i" icon="fa-solid fa-star" />
+          <font-awesome-icon v-for="i in starRating(movieObject.vote_average)" :key="'A'+ i" icon="fa-solid fa-star" />
           <font-awesome-icon v-for="i in starRatingEmpty(movieObject.vote_average)" :key="i" icon="fa-regular fa-star" />
         </div>
       </div>
