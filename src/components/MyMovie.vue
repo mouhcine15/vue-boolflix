@@ -79,7 +79,7 @@ export default {
       padding: 15px;
     }
     #testo:hover {
-      z-index: 3;
+      z-index: 2;
       background-color: black;
     }
     .fa-star {
