@@ -1,20 +1,26 @@
 <template>
   <div class="container">
     <div id="poster">
-      <img :src="`http://image.tmdb.org/t/p/w342/${movieObject.poster_path}`" alt="">
+      <div id="immagine">
+        <img :src="`http://image.tmdb.org/t/p/w342/${movieObject.poster_path}`" alt="">
+      </div>
       <div id="testo">
         <div>
-          {{movieObject.title}}
+          <strong>Titolo: </strong> {{movieObject.title}}
         </div>
         <div>
-          {{movieObject.original_title}}
+          <strong>Titolo originale: </strong> {{movieObject.original_title}}
         </div>
         <div>
-          <lang-flag :iso="movieObject.original_language"/>
+          <strong>Lingua: </strong> <lang-flag :iso="movieObject.original_language"/>
+        </div>
+        <div>
+          <strong> Overview: </strong> {{movieObject.overview}}
         </div>
         <div >
+          Voto: 
           <font-awesome-icon v-for="i in starRating(movieObject.vote_average)" :key="i" icon="fa-solid fa-star" />
-          <font-awesome-icon v-for="index in starRatingEmpty(movieObject.vote_average)" :key="index" icon="fa-regular fa-star" />
+          <font-awesome-icon v-for="i in starRatingEmpty(movieObject.vote_average)" :key="i" icon="fa-regular fa-star" />
         </div>
       </div>
     </div>
@@ -33,13 +39,11 @@ export default {
   },
   methods: {
     starRating(rating) {
-      let calc = parseInt(Math.round(rating/2))
-      console.log(calc);
+      let calc = parseInt(Math.round(rating/2));
       return calc;
     },
     starRatingEmpty(rating) {
-      let calcEmpty = parseInt(Math.round(5-(rating/2)))
-      console.log(calcEmpty);
+      let calcEmpty = parseInt(Math.round(5-(rating/2)));
       return calcEmpty;
     }
   },
@@ -59,8 +63,26 @@ export default {
       position: relative;
       margin: 20px;
     }
+    #immagine {
+      position: relative;
+      z-index: 2;
+    }
+    #immagine:hover {
+      z-index: 0;
+    }
     #testo {
       position: absolute;
       top: 0;
+      height: 100%;
+      width: 100%;
+      color:white;
+      padding: 15px;
+    }
+    #testo:hover {
+      z-index: 3;
+      background-color: black;
+    }
+    .fa-star {
+      color: yellow;
     }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div id="poster">
-      <img :src="`http://image.tmdb.org/t/p/w342/${serieObject.poster_path}`" alt="">
+      <div id="immagine">
+        <img :src="`http://image.tmdb.org/t/p/w342/${serieObject.poster_path}`" alt="">
+      </div>
       <div id="testo">
         <div>
           {{serieObject.name}}
@@ -52,8 +54,26 @@ export default {
       position: relative;
       margin: 20px;
     }
+    #immagine {
+      position: relative;
+      z-index: 2;
+    }
+    #immagine:hover {
+      z-index: 0;
+    }
     #testo {
       position: absolute;
       top: 0;
+      height: 100%;
+      width: 100%;
+      color:white;
+      padding: 15px;
+    }
+    #testo:hover {
+      z-index: 3;
+      background-color: black;
+    }
+    .fa-star {
+      color: yellow;
     }
 </style>

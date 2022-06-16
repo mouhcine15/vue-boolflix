@@ -9,7 +9,7 @@
         <button @click="searchMovie">Invio</button>
       </div>
     </div>
-    <div>
+    <div id="componenti">
         <MyMovie
             v-for="element in movies" 
             :key="element.i"
@@ -83,8 +83,20 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
   }
   #logo {
     color: red;
+  }
+  #componenti {
+    background-color: rgb(55, 54, 54);
+  }
+  input {
+    width: 250px;
+    height: 30px;
+  }
+  button {
+    width: 100px;
+    height: 30px;
   }
 </style>
